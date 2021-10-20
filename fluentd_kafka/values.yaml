@@ -15,15 +15,15 @@ image:
 ## Optional array of imagePullSecrets containing private registry credentials
 ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets: []
-service:
-  type: "NodePort"
-  port: 80
 
 
 serviceAccount:
   create: true
   annotations: {}
   name: null
+service:
+  type: "NodePort"
+  port: 80
 ingress:
   enabled: false
   className: ""
@@ -41,8 +41,8 @@ ingress:
   #      - chart-example.local
 
 
-rbac:
-  create: true
+# rbac:
+  # create: true
 
 # Configure podsecuritypolicy
 # Ref: https://kubernetes.io/docs/concepts/policy/pod-security-policy/
@@ -69,9 +69,11 @@ securityContext: {}
 # Configure the livessProbe
 # Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 livenessProbe:
-  httpGet:
-    path: /metrics
-    port: metrics
+  exec:
+    command:
+    - 1
+  initialDelaySeconds: 5
+  periodSeconds: 5
   # initialDelaySeconds: 0
   # periodSeconds: 10
   # timeoutSeconds: 1
@@ -81,9 +83,9 @@ livenessProbe:
 # Configure the readinessProbe
 # Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 readinessProbe:
-  httpGet:
-    path: /metrics
-    port: metrics
+  exec:
+    command:
+    - 1
   # initialDelaySeconds: 0
   # periodSeconds: 10
   # timeoutSeconds: 1
