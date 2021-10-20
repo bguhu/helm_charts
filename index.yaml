@@ -1,20 +1,20 @@
 apiVersion: v1
 entries:
-  fluentd_kafka:
+  fluentd-kafka:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-10-20T08:05:37.682267962+02:00"
+    created: "2021-10-20T08:54:17.447652854+02:00"
     description: A Helm chart for Kubernetes
-    digest: 8b6658a9aca56e9068a09c202ca49018acb2e69391d67c481ebc7c3b10f0aecc
-    name: fluentd_kafka
+    digest: 5d9a1291dc0b554ba61b06569ea973cb0e033079e9178e280872005cd29ad78f
+    name: fluentd-kafka
     type: application
     urls:
-    - https://bguhu.github.io/helm_charts/fluentd_kafka-0.1.0.tgz
+    - https://bguhu.github.io/helm_charts/fluentd-kafka-0.1.0.tgz
     version: 0.1.0
   log-generator:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-10-20T08:05:37.692408208+02:00"
+    created: "2021-10-20T08:54:17.45717361+02:00"
     description: A Helm chart for Kubernetes
     digest: d8eb8b27affedbdd9c701c7e8d97fd0e0061f33c747f0ea65f1d266dc3e5d9ca
     name: log-generator
@@ -22,4 +22,4 @@ entries:
     urls:
     - https://bguhu.github.io/helm_charts/log-generator-0.1.0.tgz
     version: 0.1.0
-generated: "2021-10-20T08:05:37.678955195+02:00"
+generated: "2021-10-20T08:54:17.440337289+02:00"
