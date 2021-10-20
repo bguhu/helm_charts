@@ -27,12 +27,18 @@ spec:
       serviceAccountName: {{ include "log-generator.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+        - name: varlog
+          emptyDir: {}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: varlog 
+              mountPath: /var/log
           ports:
             - name: http
               containerPort: 80
@@ -51,6 +57,12 @@ spec:
             periodSeconds: 30
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+        - name: fluentd-kafka
+          image: "guherbozdogan/fluentd-kafka:latest"
+          imagePullPolicy: "Always"
+          volumeMounts:
+            - name: varlog 
+              mountPath: /var/log
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
