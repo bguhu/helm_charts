@@ -1,5 +1,5 @@
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: "fluentd-kafka-app"
+fullnameOverride: "fluent-kafka"
 
 # DaemonSet or Deployment
 kind: "DaemonSet"
