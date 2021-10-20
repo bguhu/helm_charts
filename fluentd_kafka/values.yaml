@@ -186,15 +186,6 @@ volumeMounts:
 - name: varlog
   mountPath: /var/log
 
-## Fluentd service
-##
-service:
-  type: "ClusterIP"
-  annotations: {}
-  ports: []
-  # - name: "forwarder"
-  #   protocol: TCP
-  #   containerPort: 24224
 
 ## Prometheus Monitoring
 ##
