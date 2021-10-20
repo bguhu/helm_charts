@@ -159,22 +159,10 @@ volumes:
 - name: varlog
   hostPath:
     path: /var/log
-- name: etcfluentd-main
-  configMap:
-    name: fluentd-main
-    defaultMode: 0777
-- name: etcfluentd-config
-  configMap:
-    name: fluentd-config
-    defaultMode: 0777
 
 volumeMounts:
 - name: varlog
   mountPath: /var/log
-- name: etcfluentd-main
-  mountPath: /etc/fluent
-- name: etcfluentd-config
-  mountPath: /etc/fluent/config.d/
 
 ## Fluentd service
 ##
@@ -259,7 +247,7 @@ plugins: []
 ## Add fluentd config files from K8s configMaps
 ##
 configMapConfigs:
-  - fluentd-prometheus-conf
+#  - fluentd-prometheus-conf
 # - fluentd-systemd-conf
 
 ## Fluentd configurations:
@@ -269,7 +257,7 @@ fileConfigs:
     ## logs from podman
     <source>
      @type tail
-     path /var/log/apache/httpd-access.log
+     path /var/log/apache/apache_access_log*
      pos_file /var/log/td-agent/httpd-access.log.pos
      tag apache.access
      format apache2
@@ -281,7 +269,7 @@ fileConfigs:
      @type kafka2
 
      # list of seed brokers
-     brokers kafka-agile-node1:9092
+     my-kafka-0.my-kafka-headless.default.svc.cluster.local:9092
      use_event_time true
 
      # buffer settings
