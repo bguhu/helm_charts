@@ -55,6 +55,13 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+sidecars:
+- name: fluentd-kafka
+  image: "guherbozdogan/fluentd-kafka"
+  imagePullPolicy: Always
+  #ports:
+  #- name: 
+  #  containerPort: 1234
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

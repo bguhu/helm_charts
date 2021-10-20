@@ -51,27 +51,6 @@ spec:
             periodSeconds: 30
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-        - name: fluentd-kafka
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "guherbozdogan/fluentd-kafka:latest"
-          imagePullPolicy: "Always"
-          ports:
-            - name: http
-              containerPort: 80
-              protocol: TCP
-          livenessProbe:
-            exec:
-              command: ["echo", "1"]
-            initialDelaySeconds: 30
-            periodSeconds: 30
-          readinessProbe:
-            exec:
-              command: ["echo", "1"]
-            initialDelaySeconds: 300
-            periodSeconds: 30
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
