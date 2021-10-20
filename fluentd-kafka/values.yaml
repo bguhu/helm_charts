@@ -72,7 +72,7 @@ securityContext: {}
 livenessProbe:
   exec:
     command:
-    - 1
+    - echo 1
   initialDelaySeconds: 5
   periodSeconds: 5
   # initialDelaySeconds: 0
@@ -86,7 +86,7 @@ livenessProbe:
 readinessProbe:
   exec:
     command:
-    - 1
+    - echo 1
   # initialDelaySeconds: 0
   # periodSeconds: 10
   # timeoutSeconds: 1
