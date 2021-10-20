@@ -74,6 +74,15 @@ autoscaling:
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
+volumes:
+- name: varlog
+  hostPath:
+    path: /var/log
+
+volumeMounts:
+- name: varlog
+  mountPath: /var/log
+
 
 nodeSelector: {}
 
