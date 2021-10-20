@@ -6,6 +6,7 @@ kind: "DaemonSet"
 
 # # Only applicable for Deployment
 # replicaCount: 1
+imagePullSecrets: []
 
 image:
   repository: "guherbozdogan/fluentd-kafka"
