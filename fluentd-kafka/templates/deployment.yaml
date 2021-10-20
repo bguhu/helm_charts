@@ -39,12 +39,10 @@ spec:
               protocol: TCP
           livenessProbe:
             exec:
-              command:
-              - echo 1
+              command: ["echo", "1"]
           readinessProbe:
             exec:
-              command:
-              - echo 1
+              command: ["echo", "1"]
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
